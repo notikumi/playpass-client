@@ -1,5 +1,6 @@
 .idea/
 
 settings.xml
+*.iml
 
 target/
