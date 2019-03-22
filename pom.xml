@@ -6,7 +6,7 @@
 
     <groupId>com.notikumi</groupId>
     <artifactId>playpass-client</artifactId>
-    <version>0.4</version>
+    <version>0.5</version>
     <packaging>jar</packaging>
 
     <name>Playpass Client</name>
@@ -146,6 +146,12 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.2.0</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

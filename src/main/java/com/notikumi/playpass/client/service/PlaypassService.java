@@ -28,7 +28,8 @@ public class PlaypassService {
 	private String tenant; // X-Tenant HTTP header , HTTP-X-TENANT: aeg
 	private String hmac_access_id;
 	private String hmac_secret;
-	private String uri = "https://getin.demo.playpass.eu";
+	private String uri = "https://getin.playpass.eu";
+	//private String uri_test = "https://getin.demo.playpass.eu";
 	private String api = "tickets_api";
 	private String api_version = "v1";
 	private String format = ".json";
@@ -65,9 +66,14 @@ public class PlaypassService {
 	
 		Map<String, String> headers = buildHeaders(path, request_type, body);
 		
+		sendRequest(url, headers, body);
+    }
+    
+    
+    public void sendRequest(String url, Map<String,String> headers, String body) throws Exception{
 		String response = getPlaypassConnection().do_Post(url, headers, body);
 		if(log.isDebugEnabled()) log.debug("response: " + response);
-    }
+	}
     
 	
 	private Map<String, String> buildHeaders(String path, String request_type, String body) throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException{
@@ -96,7 +102,7 @@ public class PlaypassService {
 	}
 	
 	
-	private String buildAuthorizationHeader(String path, String request_type, String contentMd5Header, String dateHeader) throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException{
+	public String buildAuthorizationHeader(String path, String request_type, String contentMd5Header, String dateHeader) throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException{
 		String canonical_string = buildCanonicalString(path, request_type, contentMd5Header, dateHeader);
         String signature = generateSignature(canonical_string);
         
@@ -111,7 +117,7 @@ public class PlaypassService {
 	}
 	
 	
-	private String buildURL(String path){
+	public String buildURL(String path){
 		String final_url = this.uri + path;
 		return final_url;
 	}

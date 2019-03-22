@@ -69,7 +69,7 @@ public class PlaypassConnection {
 			httppost.setHeader(headerKey, headers.get(headerKey));
 		}
 		
-		StringEntity bodyEntity = new StringEntity(body);
+		StringEntity bodyEntity = new StringEntity(body, "UTF-8");
 		httppost.setEntity(bodyEntity);
 		
 		CloseableHttpClient httpclient = HttpClients.createDefault();
